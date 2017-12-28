@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}board_list.html{% endblock %}
+
+{% block content %}
+
+<div id="content">
+    <h1>게시글</h1>
+    <a href="{% url 'board:add' %}">게시글 작성</a>
+
+
+    <table>
+        <tr>
+        <td>작성자</td>
+        <td>제목</td>
+        <td>게시일</td>
+        </tr>
+
+        {% for board in object_list %}
+        <tr>
+        <td>{{ board.owner }}</td>
+        <td><a href="/board/{{board.id}}/">{{ board }}</a></td>
+        <td>{{ board.create_date }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+        {% endif %}
+    </span>
+
+</div>
+{% endblock content %}

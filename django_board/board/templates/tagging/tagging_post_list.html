@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}tagging_board_list.html{% endblock %}
+
+{% block content %}
+<div id="content">
+
+<h1>boards for tag - {{ tag.name }}</h1>
+
+{% for board in object_list %}
+    <h2><a href='{{ board.get_absolute_url }}'>{{ board.title }}</a></h2>
+    {{ board.modify_date|date:"N d, Y" }}
+    <p>{{ board.description }}</p>
+{% endfor %}
+
+</div>
+{% endblock %}

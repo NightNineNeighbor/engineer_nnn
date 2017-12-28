@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}home.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/home.css" %}{% endblock %}
+
+{% block content %}
+
+<div id="content_home">
+
+    <div id="homeimg">
+        <a href="/"><img src="{% static 'img/mr_ney.jpg' %}" style="height:256px;"/></a>
+        <h4 style="margin: 0;">Ney's Board</h4>
+    </div>
+
+    <hr style="margin: 5px 0;">
+
+    <h2>Select Application</h2>
+
+    <table id="applist">
+        <tr>
+        <td><b><i><a href="{% url 'board:list' %}">Board</a></i><b></td>
+        <td>게시판입니다.</td>
+        </tr>
+
+
+        <tr>
+        <td><b><i><a href="{% url 'board:tag_cloud' %}">TagCloude</a></i><b></td>
+        <td>태그의 빈도를 멋지게 정리하였습니다.</td>
+        </tr>
+
+        <tr>
+        <td><b><i><a href="{% url 'board:search' %}">Search</a></i><b></td>
+        <td>게시글에서 검색을 할 수 있습니다.</td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}
+
+{% block footer %}
+
+{% endblock footer %}

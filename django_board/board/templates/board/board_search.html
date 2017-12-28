@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}board_search.html{% endblock %}
+
+{% block content %}
+<div id="content">
+
+<h1>게시판 검색</h1>
+
+<form action="." method="post"> {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Submit" />
+</form>
+
+<br/><br/>
+
+{% if object_list %}
+{% for board in object_list %}
+    <h2>{{ board.title }}</a></h2>
+    {{ board.create_date|date:"N d, Y" }}
+    <p>{{ board.content }}</p>
+{% endfor %}
+
+{% elif search_term %}
+<b><i>Search Word({{ search_term }}) Not Found !</i></b>
+{% endif %}
+
+</div>
+{% endblock %}

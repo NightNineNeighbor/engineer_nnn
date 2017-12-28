@@ -1,0 +1,22 @@
+
+url(r'^articles/(\d{4}/(\d{2})/(\d+))/$', view.article_detail),
+
+만이 /article/2015/03/1/ 이라면, 패턴과 매칭되고 view.article_detail(request, '2015','03','1')을 호출한다.
+
+
+
+
+django_admin.py startproject mysite
+
+python manage.py startapp blog
+
+settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'board.apps.BoardConfig', #추가
+]

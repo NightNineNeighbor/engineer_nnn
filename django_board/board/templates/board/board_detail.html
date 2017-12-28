@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}board_detail.html{% endblock %}
+
+{% block content %}
+
+<div id="content">
+    <h1>게시글</h1>
+
+
+    <table>
+      <tr>
+      <td><h1>제목 : {{ object.title }} </h1></td>
+      </tr>
+
+      <tr>
+      <td>작성자 : {{ board.owner }}</td>
+      </tr>
+
+      <tr>
+      <td>게시일 : {{ board.create_date }}</td>
+      </tr>
+
+      <tr>
+      <td>내용 : {{ object.content }}<td>
+      </tr>
+
+      <tr>
+        {% load tagging_tags %}
+        {% tags_for_object object as tags %}
+      <td>태그 :
+        {% for tag in tags %}
+        <a href="{% url 'board:tagged_object_list' tag.name %}">{{tag.name}}</a>
+      {% endfor %}
+    </td>
+    <a href="/board/{{ object.id }}/update/">수정</a> / <a href="/board/{{ object.id }}/delete/">삭제</a>
+      </tr>
+      </table>
+</div>
+
+
+
+
+{% endblock content %}
